@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="InterviewTests">
+
+
+	<parameter name="BaseURI"
+		value="http://qainterview.merchante-solutions.com/admin" />			
+
+	<test name="Regression 1" preserve-order="true">
+		<classes>
+			<class name="com.merchant.ui.tests.IndexPageTests" />
+			<class name="com.merchant.ui.tests.UserPageTests" />
+			<class name="com.merchant.ui.tests.NewUserPageTests" />
+			<class name="com.merchant.ui.tests.UserSearchPageTests" />
+			
+			
+		</classes>
+	</test>
+	
+
+
+</suite>
