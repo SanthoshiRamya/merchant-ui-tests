@@ -51,9 +51,9 @@ public class DataProviders {
 
 	private List<SearchCriteria> getSearchCriteria(User user) {
 
-		String[] userSelectValues = new String[] { "username_contains", "username_equals", "username_equals",
+		String[] userSelectValues = new String[] { "username_contains", "username_equals", 
 				"username_starts_with", "username_ends_with" };
-		String[] emailSelectValues = new String[] { "email_contains", "email_equals", "email_equals",
+		String[] emailSelectValues = new String[] { "email_contains", "email_equals", 
 				"email_starts_with", "email_ends_with" };
 		List<SearchCriteria> criteria = new ArrayList<SearchCriteria>();
 
