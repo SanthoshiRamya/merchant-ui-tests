@@ -32,7 +32,6 @@ public class UserPage extends TestBase{
 	
 	
 	public NewUserPage clickOnNewUserButton() {
-        //wait.until(ExpectedConditions.visibilityOf(newUserButton)).click();
         newUserButton.click();
         wait.until(ExpectedConditions.titleContains("New User"));
         return new NewUserPage();
