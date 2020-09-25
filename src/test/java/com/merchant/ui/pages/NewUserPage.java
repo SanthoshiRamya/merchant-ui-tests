@@ -55,7 +55,6 @@ public class NewUserPage extends TestBase {
 	}
 	
 	public boolean verifyUserCreated() {
-		//wait.until(ExpectedConditions.visibilityOf(confirmationDiv));
 		String confirmationText = "User was successfully created";
 		List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + confirmationText + "')]"));
 		return list.size() > 0;
