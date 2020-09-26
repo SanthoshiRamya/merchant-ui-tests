@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -178,6 +179,7 @@ public class UserSearchPage extends TestBase {
 
 	public boolean verifyUserDeleted() {
 		String confirmationText = "User was successfully destroyed";
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[contains(text(),'" + confirmationText + "')]")));
 		List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + confirmationText + "')]"));
 		return list.size() > 0;
 	}

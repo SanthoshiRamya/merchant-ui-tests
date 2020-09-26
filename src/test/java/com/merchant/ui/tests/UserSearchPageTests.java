@@ -18,7 +18,7 @@ public class UserSearchPageTests extends TestBase {
 	private UserSearchPage userSearchPage;
 
 	@BeforeMethod
-	public void beforeClass(ITestContext context) {
+	public void beforeClass() {
 		userSearchPage = new UserSearchPage();
 	}
 
@@ -48,7 +48,7 @@ public class UserSearchPageTests extends TestBase {
 			System.out.println("*****************\n");
 	}
 	
-	@Test(dependsOnMethods = "runTest")
+	@Test(dependsOnMethods =  {"runTest"})
 	public void deleteUser() {
 		Assert.assertTrue(userSearchPage.deleteUser(DataProviders.user));
 	}
