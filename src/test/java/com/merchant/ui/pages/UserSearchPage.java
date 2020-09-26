@@ -66,7 +66,7 @@ public class UserSearchPage extends TestBase {
 		filterButton.submit();
 
 		List<WebElement> userNames = driver.findElements(By.xpath("//*[@id=\"index_table_users\"]/tbody/tr/td[3]"));
-		return searchCorrectUsersfound(userNames, searchText);
+		return searchCorrectUsersfound(userNames, searchText, selectValue);
 	}
 
 	public boolean searchByEmail(String selectValue, String searchText) {
@@ -77,7 +77,7 @@ public class UserSearchPage extends TestBase {
 		filterButton.submit();
 
 		List<WebElement> userNames = driver.findElements(By.xpath("//*[@id=\"index_table_users\"]/tbody/tr/td[4]"));
-		return searchCorrectUsersfound(userNames, searchText);
+		return searchCorrectUsersfound(userNames, searchText, selectValue);
 	}
 
 	public boolean searchByFromDate(String searchText) {
@@ -155,13 +155,30 @@ public class UserSearchPage extends TestBase {
 
 	}
 
-	private boolean searchCorrectUsersfound(List<WebElement> columnDataList, String searchText) {
+	private boolean searchCorrectUsersfound(List<WebElement> columnDataList, String searchText, String condition) {
 		boolean usernamesFound = columnDataList != null && columnDataList.size() > 0;
 		if (usernamesFound) {
 			for (WebElement element : columnDataList) {
-				if (!element.getText().contains(searchText)) {
-					usernamesFound = false;
-					break;
+				if(condition.contains("equals")) {
+					if (!element.getText().equals(searchText)) {
+						usernamesFound = false;
+						break;
+					}
+				}else if(condition.contains("contains")) {
+					if (!element.getText().contains(searchText)) {
+						usernamesFound = false;
+						break;
+					}
+				}else if(condition.contains("starts")) {
+					if (!element.getText().startsWith(searchText)) {
+						usernamesFound = false;
+						break;
+					}
+				}else if(condition.contains("contains")) {
+					if (!element.getText().endsWith(searchText)) {
+						usernamesFound = false;
+						break;
+					}
 				}
 			}
 
