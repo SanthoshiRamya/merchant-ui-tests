@@ -1,4 +1,4 @@
-package com.merchant.ui.tests.filter.json;
+package com.merchant.ui.tests.data;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,23 +26,16 @@ public class DataProviders {
 	private static final FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
 			new RandomService(random));
 
-	private static User user= null;
+	public static User user= null;
 
 	@DataProvider(name = "user-search-provider")
 	public Object[][] createDataProvider(ITestContext context) throws Exception {
 
 		Object[][] providerData = new Object[1][1];
 		
-		providerData[0][0] = getSearchTestCases();
+		providerData[0][0] = getSearchCriteria(user);
 		
 		return providerData;
-	}
-
-	private List<SearchCriteria> getSearchTestCases() {
-		List<SearchCriteria> testCases = new ArrayList<SearchCriteria>();
-		testCases.addAll(getSearchCriteria(user));
-		return testCases;
-
 	}
 
 	private List<SearchCriteria> getSearchCriteria(User user) {

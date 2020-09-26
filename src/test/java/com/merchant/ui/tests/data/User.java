@@ -1,4 +1,4 @@
-package com.merchant.ui.tests.filter.json;
+package com.merchant.ui.tests.data;
 
 import java.util.Date;
 

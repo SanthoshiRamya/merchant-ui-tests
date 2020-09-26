@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import com.merchant.ui.TestBase;
 import com.merchant.ui.pages.UserSearchPage;
-import com.merchant.ui.tests.filter.json.DataProviders;
-import com.merchant.ui.tests.filter.json.SearchCriteria;
+import com.merchant.ui.tests.data.DataProviders;
+import com.merchant.ui.tests.data.SearchCriteria;
 import com.merchant.ui.tests.filter.types.FilterTypes;
 
 public class UserSearchPageTests extends TestBase {
@@ -46,6 +46,11 @@ public class UserSearchPageTests extends TestBase {
 				userSearchPage.clearFilters();
 			}
 			System.out.println("*****************\n");
+	}
+	
+	@Test(dependsOnMethods = "runTest")
+	public void deleteUser() {
+		Assert.assertTrue(userSearchPage.deleteUser(DataProviders.user));
 	}
 
 }

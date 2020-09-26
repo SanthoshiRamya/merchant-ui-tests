@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.merchant.ui.TestBase;
+import com.merchant.ui.tests.data.User;
 
 public class UserSearchPage extends TestBase {
 
@@ -47,6 +48,9 @@ public class UserSearchPage extends TestBase {
 
 	@FindBy(xpath = "//*[@id=\"q_created_at_lteq_datetime\"]")
 	WebElement toDate;
+	
+	@FindBy(xpath = "//table[@id='index_table_users']/tbody/tr/td[6]/div/a[3]")
+	WebElement deleteLink;
 
 	public UserSearchPage() {
 		PageFactory.initElements(driver, this);
@@ -159,8 +163,22 @@ public class UserSearchPage extends TestBase {
 					break;
 				}
 			}
+
 		}
+
 		return usernamesFound;
 	}
 
+	public boolean deleteUser(User user) {
+		searchByEmail("email_equals", user.getEmail());
+		deleteLink.click();
+		driver.switchTo().alert().accept();
+		return verifyUserDeleted();
+	}
+
+	public boolean verifyUserDeleted() {
+		String confirmationText = "User was successfully destroyed";
+		List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + confirmationText + "')]"));
+		return list.size() > 0;
+	}
 }

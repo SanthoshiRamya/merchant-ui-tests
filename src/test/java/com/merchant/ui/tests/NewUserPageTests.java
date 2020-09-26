@@ -7,8 +7,9 @@ import org.testng.annotations.Test;
 
 import com.merchant.ui.TestBase;
 import com.merchant.ui.pages.NewUserPage;
-import com.merchant.ui.tests.filter.json.DataProviders;
-import com.merchant.ui.tests.filter.json.User;
+import com.merchant.ui.tests.data.DataProviders;
+import com.merchant.ui.tests.data.User;
+
 
 public class NewUserPageTests extends TestBase {
 	

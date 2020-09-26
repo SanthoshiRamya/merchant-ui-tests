@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.merchant.ui.TestBase;
-import com.merchant.ui.tests.filter.json.User;
+import com.merchant.ui.tests.data.User;
 
 public class NewUserPage extends TestBase {
 
