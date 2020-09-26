@@ -23,9 +23,8 @@ public class UserSearchPageTests extends TestBase {
 	}
 
 	@Test(dataProvider = "user-search-provider", dataProviderClass = DataProviders.class)
-	public void runTest(List<List<SearchCriteria>> testCases) throws Exception {
-		for (List<SearchCriteria> testcase : testCases) {
-			for (SearchCriteria sc : testcase) {
+	public void runTest(List<SearchCriteria> testCases) throws Exception {
+			for (SearchCriteria sc : testCases) {
 				String selectValue = sc.getSelect();
 				String text = sc.getText();
 				System.out.println(sc);
@@ -47,7 +46,6 @@ public class UserSearchPageTests extends TestBase {
 				userSearchPage.clearFilters();
 			}
 			System.out.println("*****************\n");
-		}
 	}
 
 }

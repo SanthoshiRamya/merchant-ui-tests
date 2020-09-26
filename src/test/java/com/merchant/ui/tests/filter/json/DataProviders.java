@@ -26,12 +26,10 @@ public class DataProviders {
 	private static final FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
 			new RandomService(random));
 
-	private static final List<User> usersList = Collections.synchronizedList(new ArrayList<User>());
+	private static User user= null;
 
 	@DataProvider(name = "user-search-provider")
 	public Object[][] createDataProvider(ITestContext context) throws Exception {
-
-		List<List<SearchCriteria>> criterias = getSearchTestCases();
 
 		Object[][] providerData = new Object[1][1];
 		
@@ -40,11 +38,9 @@ public class DataProviders {
 		return providerData;
 	}
 
-	private List<List<SearchCriteria>> getSearchTestCases() {
-		List<List<SearchCriteria>> testCases = new ArrayList<List<SearchCriteria>>();
-		for (User user : usersList) {
-			testCases.add(getSearchCriteria(user));
-		}
+	private List<SearchCriteria> getSearchTestCases() {
+		List<SearchCriteria> testCases = new ArrayList<SearchCriteria>();
+		testCases.addAll(getSearchCriteria(user));
 		return testCases;
 
 	}
@@ -60,15 +56,14 @@ public class DataProviders {
 		for (int i = 0; i < userSelectValues.length; i++) {
 			criteria.add(new SearchCriteria(userSelectValues[i], getSubString(user.getUserName(), userSelectValues[i]),
 					"USERNANE_FILTER"));
-
-			for (int j = 0; j < emailSelectValues.length; j++) {
-				criteria.add(new SearchCriteria(emailSelectValues[j],
-						getSubString(user.getEmail(), emailSelectValues[j]), "EMAIL_FILTER"));
-
-			}
-			criteria.add(new SearchCriteria("NA", getRandomDate(user.getGeneratedAt(), false), "FROM_DATE_FILTER"));
-			criteria.add(new SearchCriteria("NA", getRandomDate(user.getGeneratedAt(), true), "TO_DATE_FILTER"));
 		}
+		for (int j = 0; j < emailSelectValues.length; j++) {
+			criteria.add(new SearchCriteria(emailSelectValues[j],
+					getSubString(user.getEmail(), emailSelectValues[j]), "EMAIL_FILTER"));
+
+		}
+		criteria.add(new SearchCriteria("NA", getRandomDate(user.getGeneratedAt(), false), "FROM_DATE_FILTER"));
+		criteria.add(new SearchCriteria("NA", getRandomDate(user.getGeneratedAt(), true), "TO_DATE_FILTER"));
 
 		return criteria;
 
@@ -76,10 +71,10 @@ public class DataProviders {
 
 	public static User getAFakeUser() {
 		String email = fakeValuesService.bothify("????##@interviewTesting.com");
-		User user = new User(faker.superhero().prefix() + faker.name().firstName() + faker.address().buildingNumber(),
+		User fakeUser = new User(faker.superhero().prefix() + faker.name().firstName() + faker.address().buildingNumber(),
 				email, RandomStringUtils.randomAlphabetic(10), new Date());
-		usersList.add(user);
-		return user;
+		user= fakeUser;
+		return fakeUser;
 	}
 
 	private String getSubString(String value, String criteria) {
