@@ -19,7 +19,7 @@ import com.merchant.ui.tests.data.User;
 public class UserSearchPage extends TestBase {
 
 	private static final String RESULT_DATE_FORMAT = "MMMM dd, yyyy HH:mm";
-	private static final String SEARCG_DATE_FORMAT = "yyyy-MM-dd";
+	private static final String SEARCH_DATE_FORMAT = "yyyy-MM-dd";
 
 	protected WebDriverWait wait;
 
@@ -82,7 +82,7 @@ public class UserSearchPage extends TestBase {
 
 	public boolean searchByFromDate(String searchText) {
 
-		SimpleDateFormat searchSdf = new SimpleDateFormat(SEARCG_DATE_FORMAT);
+		SimpleDateFormat searchSdf = new SimpleDateFormat(SEARCH_DATE_FORMAT);
 		Date searchDate;
 		try {
 			searchDate = searchSdf.parse(searchText);
@@ -117,7 +117,7 @@ public class UserSearchPage extends TestBase {
 
 	public boolean searchByToDate(String searchText) {
 
-		SimpleDateFormat searchSdf = new SimpleDateFormat(SEARCG_DATE_FORMAT);
+		SimpleDateFormat searchSdf = new SimpleDateFormat(SEARCH_DATE_FORMAT);
 		Date searchDate;
 		try {
 			searchDate = searchSdf.parse(searchText);
