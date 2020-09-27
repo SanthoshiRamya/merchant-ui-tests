@@ -3,13 +3,11 @@ package com.merchant.ui.tests.data;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
@@ -65,7 +63,7 @@ public class DataProviders {
 	public static User getAFakeUser() {
 		String email = fakeValuesService.bothify("????##@interviewTesting.com");
 		User fakeUser = new User(faker.superhero().prefix() + faker.name().firstName() + faker.address().buildingNumber(),
-				email, RandomStringUtils.randomAlphabetic(10), new Date());
+				email, faker.internet().password(8,10), new Date());
 		user= fakeUser;
 		return fakeUser;
 	}
