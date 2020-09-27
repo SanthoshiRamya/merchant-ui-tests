@@ -18,7 +18,7 @@ public class UserPageTests extends TestBase {
 	
 	
 	@Test
-	public void testIndexPage() {
+	public void testUserPage() {
 		String title = userPage.getTitle();
 		Assert.assertEquals(title, "Users | Active Admin Depot");
 		userPage.clickOnNewUserButton();
