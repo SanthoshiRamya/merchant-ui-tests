@@ -1,21 +1,18 @@
 package com.merchant.ui.tests;
 
 import org.testng.Assert;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.merchant.ui.TestBase;
 import com.merchant.ui.pages.IndexPage;
-import com.merchant.ui.pages.UserPage;
 
 public class IndexPageTests extends TestBase {
 	
 	private IndexPage indexPage;
 	
-	@BeforeMethod
-	public void beforeClass(ITestContext context) {
+	@BeforeClass
+	public void beforeClass() {
 		indexPage = new IndexPage();
 		driver.get(baseUrl);
 	}

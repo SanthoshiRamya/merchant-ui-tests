@@ -1,8 +1,7 @@
 package com.merchant.ui.tests;
 
 import org.testng.Assert;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.merchant.ui.TestBase;
@@ -12,8 +11,8 @@ public class UserPageTests extends TestBase {
 	
 	private UserPage userPage;
 	
-	@BeforeMethod
-	public void beforeClass(ITestContext context) {
+	@BeforeClass
+	public void beforeClass() {
 		userPage = new UserPage();
 	}
 	

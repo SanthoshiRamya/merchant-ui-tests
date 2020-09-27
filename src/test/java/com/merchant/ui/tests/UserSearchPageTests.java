@@ -3,8 +3,7 @@ package com.merchant.ui.tests;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.merchant.ui.TestBase;
@@ -17,7 +16,7 @@ public class UserSearchPageTests extends TestBase {
 
 	private UserSearchPage userSearchPage;
 
-	@BeforeMethod
+	@BeforeClass
 	public void beforeClass() {
 		userSearchPage = new UserSearchPage();
 	}
