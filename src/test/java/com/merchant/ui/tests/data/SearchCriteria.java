@@ -9,7 +9,7 @@ public class SearchCriteria {
 	
 
 	public SearchCriteria(String select, String text, String type) {
-		super();
+		
 		this.select = select;
 		this.text = text;
 		this.type = type;
